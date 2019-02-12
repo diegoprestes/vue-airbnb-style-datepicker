@@ -20,6 +20,7 @@ Vue.use(AirBnbStyleDatepicker, {
     'November',
     'December',
   ],
+  enableKeyboardShortcuts: false,
   colors: {
     selected: '#00a699',
     inRange: '#66e2da',

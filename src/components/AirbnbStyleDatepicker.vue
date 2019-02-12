@@ -250,6 +250,7 @@ export default {
       dateLabelFormat: 'dddd, MMMM D, YYYY',
       showDatepicker: false,
       showKeyboardShortcutsMenu: false,
+      enableKeyboardShortcuts: true,
       showMonths: 2,
       colors: {
         selected: '#00a699',
@@ -513,18 +514,22 @@ export default {
       this.openDatepicker()
     }
 
-    this.$el.addEventListener('keyup', this.handleKeyboardInput)
-    this.$el.addEventListener('keydown', this.trapKeyboardInput)
-    this.triggerElement.addEventListener('keyup', this.handleTriggerInput)
+    if (this.enableKeyboardShortcuts) {
+      this.$el.addEventListener('keyup', this.handleKeyboardInput)
+      this.$el.addEventListener('keydown', this.trapKeyboardInput)
+      this.triggerElement.addEventListener('keyup', this.handleTriggerInput)
+    }
     this.triggerElement.addEventListener('click', this._handleWindowClickEvent)
   },
   destroyed() {
     window.removeEventListener('resize', this._handleWindowResizeEvent)
     window.removeEventListener('click', this._handleWindowClickEvent)
 
-    this.$el.removeEventListener('keyup', this.handleKeyboardInput)
-    this.$el.removeEventListener('keydown', this.trapKeyboardInput)
-    this.triggerElement.removeEventListener('keyup', this.handleTriggerInput)
+    if (this.enableKeyboardShortcuts) {
+      this.$el.removeEventListener('keyup', this.handleKeyboardInput)
+      this.$el.removeEventListener('keydown', this.trapKeyboardInput)
+      this.triggerElement.removeEventListener('keyup', this.handleTriggerInput)
+    }
     this.triggerElement.removeEventListener('click', this._handleWindowClickEvent)
   },
   methods: {
@@ -757,6 +762,8 @@ export default {
         this.texts.apply = texts.apply || this.texts.apply
         this.texts.cancel = texts.cancel || this.texts.cancel
       }
+      this.enableKeyboardShortcuts =
+        this.$options.enableKeyboardShortcuts == null ? true : this.$options.enableKeyboardShortcuts
     },
     setStartDates() {
       let startDate = this.dateOne || new Date()
