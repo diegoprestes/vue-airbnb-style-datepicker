@@ -40,15 +40,6 @@
             </svg>
           </button>
         </div>
-
-        <div
-          class="asd__days-legend"
-          v-for="(month, index) in showMonths"
-          :key="month"
-          :style="[monthWidthStyles, {left: (width * index) + 'px'}]"
-        >
-          <div class="asd__day-title" v-for="day in daysShort" :key="day">{{ day }}</div>
-        </div>
       </div>
 
       <div class="asd__inner-wrapper" :style="innerStyles">
@@ -98,6 +89,10 @@
                 >{{ year }}</option>
               </select>
               <span v-else>{{ month.year }}</span>
+            </div>
+
+            <div class="asd__days-legend" :style="[monthWidthStyles]">
+              <div class="asd__day-title" v-for="day in daysShort" :key="day">{{ day }}</div>
             </div>
 
             <table class="asd__month-table" role="presentation">
@@ -1212,10 +1207,8 @@ $transition-time: 0.3s;
   }
 
   &__days-legend {
-    position: absolute;
-    top: 50px;
-    left: 10px;
-    padding: 0 10px;
+    padding: 0 15px;
+    margin-left: -15px;
   }
   &__day-title {
     display: inline-block;
