@@ -517,9 +517,10 @@ export default {
     if (this.enableKeyboardShortcuts) {
       this.$el.addEventListener('keyup', this.handleKeyboardInput)
       this.$el.addEventListener('keydown', this.trapKeyboardInput)
-      this.triggerElement.addEventListener('keyup', this.handleTriggerInput)
+      this.triggerElement && this.triggerElement.addEventListener('keyup', this.handleTriggerInput)
     }
-    this.triggerElement.addEventListener('click', this._handleWindowClickEvent)
+    this.triggerElement &&
+      this.triggerElement.addEventListener('click', this._handleWindowClickEvent)
   },
   destroyed() {
     window.removeEventListener('resize', this._handleWindowResizeEvent)
@@ -528,9 +529,11 @@ export default {
     if (this.enableKeyboardShortcuts) {
       this.$el.removeEventListener('keyup', this.handleKeyboardInput)
       this.$el.removeEventListener('keydown', this.trapKeyboardInput)
-      this.triggerElement.removeEventListener('keyup', this.handleTriggerInput)
+      this.triggerElement &&
+        this.triggerElement.removeEventListener('keyup', this.handleTriggerInput)
     }
-    this.triggerElement.removeEventListener('click', this._handleWindowClickEvent)
+    this.triggerElement &&
+      this.triggerElement.removeEventListener('click', this._handleWindowClickEvent)
   },
   methods: {
     getDayStyles(date) {
