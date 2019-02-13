@@ -1,6 +1,6 @@
 {
   "name": "dp-vue-airbnb-style-datepicker",
-  "version": "2.4.3",
+  "version": "2.4.4",
   "description": "A forked version of MikaelEdebro/vue-airbnb-style-datepicker with some style changes",
   "main": "dist/vue-airbnb-style-datepicker.cjs.js",
   "module": "dist/vue-airbnb-style-datepicker.es.js",
