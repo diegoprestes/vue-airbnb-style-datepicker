@@ -365,8 +365,14 @@ export default {
       return {
         position: this.inline ? 'static' : 'absolute',
         top: this.inline ? '0' : this.triggerPosition.height + this.offsetY + 'px',
-        left: !this.alignRight && !this.forceAlignRight ? this.triggerWrapperPosition.left + this.offsetX + 'px' : '',
-        right: this.alignRight || this.forceAlignRight ? this.triggerWrapperPosition.right + this.offsetX + 'px' : '',
+        left:
+          !this.alignRight && !this.forceAlignRight
+            ? this.triggerWrapperPosition.left + this.offsetX + 'px'
+            : '',
+        right:
+          this.alignRight || this.forceAlignRight
+            ? this.triggerWrapperPosition.right + this.offsetX + 'px'
+            : '',
         width: this.width * this.showMonths + 'px',
         zIndex: this.inline ? '0' : '100',
       }
